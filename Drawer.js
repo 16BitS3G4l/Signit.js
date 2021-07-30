@@ -15,10 +15,9 @@ class Drawer {
             TouchEvent.preventDefault();
         });
 
-        canvas.addEventListener("mousedown", function(e) {
-            console.log("Mousedown: " + e);
+        canvas.addEventListener("mousedown", function(MouseEvent) {
             window.drawer_drawing = true;
-            window.drawer_ctx.moveTo(e.clientX, e.clientY);
+            window.drawer_ctx.moveTo(MouseEvent.clientX, MouseEvent.clientY);
             window.drawer_ctx.beginPath();
             e.preventDefault();
         });
@@ -29,14 +28,12 @@ class Drawer {
             TouchEvent.preventDefault();
         });
 
-        canvas.addEventListener("mouseup", function(mouseEvt) {
-            console.log("Mouseup: " + mouseEvt);
+        canvas.addEventListener("mouseup", function(MouseEvent) {
             window.drawer_ctx.stroke();
             window.drawer_drawing = false;
         });
 
-        canvas.addEventListener("mouseleave", function(mouseEvt) {
-            console.log("Mouse leave: " + mouseEvt);
+        canvas.addEventListener("mouseleave", function(MouseEvent) {
             window.drawer_drawing = false;
         });
 
@@ -48,10 +45,9 @@ class Drawer {
             }
         });
 
-        canvas.addEventListener("mousemove", function(mouseEvt) {
-            console.log("Mouse move: " + mouseEvt);
+        canvas.addEventListener("mousemove", function(MouseEvent) {
             if(window.drawer_drawing) {
-                window.drawer_ctx.lineTo(mouseEvt.clientX, mouseEvt.clientY);
+                window.drawer_ctx.lineTo(MouseEvent.clientX, MouseEvent.clientY);
                 window.drawer_ctx.stroke();
             }
         });
